@@ -13,9 +13,10 @@ list containers
 ```
 docker ps [OPTIONS]
 ```
-## login
+## login & logout
 ```
-docker login
+docker login -u [ID] -p [PASSWORD]
+docker logout
 ```
 
 ## pull
@@ -98,5 +99,23 @@ CMD ["python3", "-u", "-m", "http.server"]
 docker run -p 8888:8000 --name webserver web-server-build (CMD로 지정된 명령어 실행)
 docker run -p 8888:8000 --name webserver web-server-build pwd (CMD 무시하고 pwd 실행, override)
 ```
+## github container registry
+**first you have to get an personal access token**
 
+login
+```
+export CR_PAT=[YOUR_TOKEN]
+docker login ghcr.io -u [USERNAME] --password-stdin
+```
+
+make image like below format
+```
+image name format : ghcr.io/[OWNER]/[IMAGE_NAME]:[TAG]
+```
+
+example
+```
+docker commit my-container ghcr.io/my-git-repository-name/my-container:latest
+docker push ghcr.io/my-git-repository-name/my-container:latest
+```
 # Reference
