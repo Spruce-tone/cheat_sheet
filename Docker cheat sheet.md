@@ -99,6 +99,14 @@ CMD ["python3", "-u", "-m", "http.server"]
 docker run -p 8888:8000 --name webserver web-server-build (CMD로 지정된 명령어 실행)
 docker run -p 8888:8000 --name webserver web-server-build pwd (CMD 무시하고 pwd 실행, override)
 ```
+## exec
+```
+docker exec -it mongodb bash
+```
+
+## compose
+
+
 ## github container registry
 **first you have to get an personal access token**
 
